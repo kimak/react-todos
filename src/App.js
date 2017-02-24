@@ -61,7 +61,7 @@ class TodoList extends Component {
         <button onClick={this.onAddTodo}>Ajouter</button>
         <ul>{
           this.state.todos.map((item, index)=>{
-            return <TodoItem key={index} label={item} complete />
+            return <TodoItem key={index} label={item} />
           })
         }</ul>
       </div>
