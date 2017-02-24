@@ -33,7 +33,7 @@ class TodoList extends Component {
     return (
       <ul>{
         todoData.map((item, index)=>{
-          return <TodoItem key={index} label={item} complete />
+          return <TodoItem key={index} label={item} />
         })
       }</ul>
     );
