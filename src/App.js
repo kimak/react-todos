@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 
 const todoData = ["Learn Javascript", "Learn ES6", "Learn React", "Learn React Native", "Learn Redux", "Learn Nodejs", "Learn to teach", "Teach to learn"];
 
-const TodoItem = (props) => {
-    return (<li>{props.label}</li>);
+class TodoItem extends Component {
+  render (){
+    return (<li>{this.props.label}</li>);
+  }
 }
 
 class TodoList extends Component {
