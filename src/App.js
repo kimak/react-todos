@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+const todoData = ["Learn Javascript", "Learn ES6", "Learn React", "Learn React Native", "Learn Redux", "Learn Nodejs", "Learn to teach", "Teach to learn"];
+
+const TodoItem = (props) => {
+    return (<li>{props.label}</li>);
+}
+
+class TodoList extends Component {
+  render() {
+    return (
+      <ul>{
+        todoData.map((item, index)=>{
+          return <TodoItem key={index} label={item} />
+        })
+      }</ul>
+    );
+  }
+}
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <TodoList />
     );
   }
 }
