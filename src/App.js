@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import "./App.css";
 
-const todoData = ["Learn Javascript", "Learn ES6", "Learn React", "Learn React Native", "Learn Redux", "Learn Nodejs", "Learn by doing","Learn to teach", "Teach to learn"];
-
 class TodoItem extends Component {
 
   constructor(props){
     super(props);
     this.onClick = this.onClick.bind(this);
     this.state = {
-      complete: false
+      complete: false,
     }
   }
 
@@ -29,13 +27,44 @@ class TodoItem extends Component {
 }
 
 class TodoList extends Component {
+
+  constructor(props){
+    super(props);
+    this.onAddTodo = this.onAddTodo.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
+    this.state = {
+      todos: [],
+      inputValue: "",
+    }
+  }
+
+  onAddTodo(){
+    const todos = this.state.todos;
+    todos.push(this.state.inputValue);
+
+    this.setState({
+      todos,
+      inputValue: "",
+    });
+  }
+
+  onInputChange(event){
+    this.setState({
+      inputValue: event.target.value,
+    });
+  }
+
   render() {
     return (
-      <ul>{
-        todoData.map((item, index)=>{
-          return <TodoItem key={index} label={item} />
-        })
-      }</ul>
+      <div>
+        <input type="text" value={this.state.inputValue} onChange={this.onInputChange}/>
+        <button onClick={this.onAddTodo}>Ajouter</button>
+        <ul>{
+          this.state.todos.map((item, index)=>{
+            return <TodoItem key={index} label={item} complete />
+          })
+        }</ul>
+      </div>
     );
   }
 }
