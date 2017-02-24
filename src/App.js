@@ -3,12 +3,14 @@ import "./App.css";
 
 const todoData = ["Learn Javascript", "Learn ES6", "Learn React", "Learn React Native", "Learn Redux", "Learn Nodejs", "Learn by doing","Learn to teach", "Teach to learn"];
 
-const TodoItem = (props) => {
+class TodoItem extends Component {
+  render (){
 
     let itemClass = "";
-    if(props.complete) itemClass = "complete";
+    if(this.props.complete) itemClass = "complete";
 
-    return (<li className={itemClass}>{props.label}</li>);
+    return (<li className={itemClass}>{this.props.label}</li>);
+  }
 }
 
 class TodoList extends Component {
