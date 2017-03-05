@@ -1,3 +1,10 @@
 .complete {
   text-decoration: line-through;
 }
+
+.filterSelected{
+  background-color: #CCC;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+}

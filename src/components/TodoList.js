@@ -57,6 +57,10 @@ export default class TodoList extends Component {
 
   render() {
 
+    const allClass = (this.state.filter==="none") ? "filterSelected" : "";
+    const completeClass = (this.state.filter==="complete") ? "filterSelected" : "";
+    const todoClass = (this.state.filter==="todo") ? "filterSelected" : "";
+
     return (
       <div>
         <input type="text" value={this.state.inputValue} onChange={this.onInputChange}/>
@@ -77,9 +81,9 @@ export default class TodoList extends Component {
         }</ul>
         <div>
           <span>Filtres: </span>
-          <button onClick={this.selectFilter.bind(this,"none")}>Tous</button>
-          <button onClick={this.selectFilter.bind(this,"complete")}>Terminé</button>
-          <button onClick={this.selectFilter.bind(this,"todo")}>A faire</button>
+          <button className={allClass} onClick={this.selectFilter.bind(this,"none")}>Tous</button>
+          <button className={completeClass} onClick={this.selectFilter.bind(this,"complete")}>Terminé</button>
+          <button className={todoClass} onClick={this.selectFilter.bind(this,"todo")}>A faire</button>
         </div>
       </div>
     );
