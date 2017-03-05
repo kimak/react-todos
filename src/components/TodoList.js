@@ -9,8 +9,8 @@ export default class TodoList extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.state = {
       todos: [
-        {label: "Learn Javascript", complete: false},
-        {label: "Learn ES6", complete: false},
+        {label: "Learn Javascript", complete: true},
+        {label: "Learn ES6", complete: true},
         {label: "Learn React", complete: false},
         {label: "Learn React Native", complete: false},
         {label: "Learn Nodejs", complete: false},
