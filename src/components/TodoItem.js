@@ -1,26 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class TodoItem extends Component {
-
-  constructor(props){
-    super(props);
-    this.onClick = this.onClick.bind(this);
-    this.state = {
-      complete: false,
-    }
-  }
-
-  onClick(){
-    this.setState({
-      complete: !this.state.complete
-    })
-  }
-
-  render (){
+const TodoItem = (props) => {
 
     let itemClass = "";
-    if(this.state.complete) itemClass = "complete";
+    if(props.complete) itemClass = "complete";
 
-    return (<li className={itemClass} onClick={this.onClick}>{this.props.label}</li>);
-  }
+    return (<li className={itemClass} onClick={props.onClick}>{props.label}</li>);
 }
+
+export default TodoItem;
