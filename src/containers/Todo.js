@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import TodoList from "../components/TodoList";
 import TodoFilter from "../components/TodoFilter";
+import TodoInput from "../components/TodoInput";
 
 export default class Todo extends Component {
 
   constructor(props){
     super(props);
     this.onAddTodo = this.onAddTodo.bind(this);
-    this.onInputChange = this.onInputChange.bind(this);
     this.toggleItem = this.toggleItem.bind(this);
     this.selectFilter = this.selectFilter.bind(this);
     this.state = {
@@ -22,25 +22,19 @@ export default class Todo extends Component {
         {label: "Teach to learn", complete: false},
       ],
       filter: "none",
-      inputValue: "",
     }
   }
 
-  onAddTodo(){
+  onAddTodo(value){
+    console.log("onAddTodo ",value)
     const todos = this.state.todos;
     todos.push({
-      label: this.state.inputValue
+      label: value,
+      complete: false,
     });
 
     this.setState({
       todos,
-      inputValue: "",
-    });
-  }
-
-  onInputChange(event){
-    this.setState({
-      inputValue: event.target.value,
     });
   }
 
@@ -59,11 +53,9 @@ export default class Todo extends Component {
   }
 
   render() {
-
     return (
       <div>
-        <input type="text" value={this.state.inputValue} onChange={this.onInputChange}/>
-        <button onClick={this.onAddTodo}>Ajouter</button>
+        <TodoInput onAddTodo={this.onAddTodo} />
         <TodoList todos={this.state.todos} filter={this.state.filter} selectItem={this.toggleItem} />
         <TodoFilter status={this.state.filter} onSelectFilter={this.selectFilter} />
       </div>
