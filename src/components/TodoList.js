@@ -18,6 +18,7 @@ export default class TodoList extends Component {
         {label: "Learn to teach", complete: false},
         {label: "Teach to learn", complete: false},
       ],
+      filter: "none",
       inputValue: "",
     }
   }
@@ -48,13 +49,25 @@ export default class TodoList extends Component {
     });
   }
 
+  selectFilter(status){
+    this.setState({
+      filter: status,
+    });
+  }
+
   render() {
+
     return (
       <div>
         <input type="text" value={this.state.inputValue} onChange={this.onInputChange}/>
         <button onClick={this.onAddTodo}>Ajouter</button>
         <ul>{
           this.state.todos.map((item, index)=>{
+
+            const isTodoFiltered = (this.state.filter==="todo" && item.complete===true);
+            const isCompleteFiltered = (this.state.filter==="complete" && item.complete===false);
+            if(isTodoFiltered || isCompleteFiltered) return null;
+
             return <TodoItem key={index}
                              label={item.label}
                              complete={item.complete}
@@ -64,9 +77,9 @@ export default class TodoList extends Component {
         }</ul>
         <div>
           <span>Filtres: </span>
-          <button>Tous</button>
-          <button>Terminé</button>
-          <button>A faire</button>
+          <button onClick={this.selectFilter.bind(this,"none")}>Tous</button>
+          <button onClick={this.selectFilter.bind(this,"complete")}>Terminé</button>
+          <button onClick={this.selectFilter.bind(this,"todo")}>A faire</button>
         </div>
       </div>
     );
