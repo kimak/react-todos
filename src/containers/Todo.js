@@ -26,7 +26,6 @@ export default class Todo extends Component {
   }
 
   onAddTodo(value){
-    console.log("onAddTodo ",value)
     const todos = this.state.todos;
     todos.push({
       label: value,
